@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 // Importing all the routings
 import loginRouter from "./routes/loginRoute";
+import sessionRouter from "./routes/sessionRoute";
 
 dotenv.config();
 
@@ -19,5 +20,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/login", loginRouter);
+app.use("/session", sessionRouter);
 
 export default app;
