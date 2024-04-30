@@ -3,7 +3,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 const assignmentSchema = new Schema({
-    name: { type: String, required: true },
+    title: { type: String, required: true },
     description: { type: String, required: true },
     dueDate: { type: Date, required: true },
     fromSession: {
