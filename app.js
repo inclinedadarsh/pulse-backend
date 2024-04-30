@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 // Importing all the routings
 import loginRouter from "./routes/loginRoute";
 import sessionRouter from "./routes/sessionRoute";
+import projectRouter from "./routes/projectRoute";
 
 dotenv.config();
 
@@ -21,5 +22,6 @@ app.get("/", (req, res) => {
 
 app.use("/login", loginRouter);
 app.use("/session", sessionRouter);
+app.use("/project", projectRouter);
 
 export default app;

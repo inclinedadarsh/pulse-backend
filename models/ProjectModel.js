@@ -16,6 +16,11 @@ const projectSchema = new Schema({
             answer: { type: String, required: true },
         },
     ],
+    fromSession: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Session",
+        required: true,
+    },
 });
 
 const ProjectModel = mongoose.model("Project", projectSchema);
