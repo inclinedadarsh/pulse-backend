@@ -23,9 +23,14 @@ router.post("/", async (req, res) => {
                 select: "name", // Assuming only name field is needed from User model
             })
             .populate({
-                path: "assignments.assignment",
+                path: "submissions.assignment",
                 model: "Assignment",
-                select: "name description dueDate",
+                select: "title description",
+            })
+            .populate({
+                path: "submissions.contributor",
+                model: "User",
+                select: "name",
             });
 
         if (!project) {

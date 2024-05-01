@@ -6,14 +6,24 @@ const projectSchema = new Schema({
     name: { type: String, required: true },
     team: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
     description: { type: String, required: true },
-    assignments: [
+    submissions: [
         {
             assignment: {
                 type: Schema.Types.ObjectId,
                 ref: "Assignment",
                 required: true,
             },
-            answer: { type: String, required: true },
+            teamSubmission: {
+                type: Boolean,
+                default: false,
+            },
+            contributor: {
+                type: Schema.Types.ObjectId,
+                ref: "User",
+            },
+            answer: {
+                type: String,
+            },
         },
     ],
     fromSession: {
