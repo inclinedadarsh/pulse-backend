@@ -26,11 +26,6 @@ router.post("/", async (req, res) => {
                 path: "submissions.assignment",
                 model: "Assignment",
                 select: "title description",
-            })
-            .populate({
-                path: "submissions.contributor",
-                model: "User",
-                select: "name",
             });
 
         if (!project) {

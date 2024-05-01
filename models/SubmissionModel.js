@@ -6,10 +6,7 @@ const submissionSchema = new mongoose.Schema({
         ref: "Assignment",
         required: true,
     },
-    teamSubmission: { type: Boolean, default: false }, // Indicates whether it's a team submission or individual
-    team: [{ type: Schema.Types.ObjectId, ref: "User" }], // Only for team submission
-    contributor: { type: Schema.Types.ObjectId, ref: "User" }, // For individual submission
-    answer: { type: String, required: true },
+    answer: { type: String, required: true, default: "" },
     // Other submission properties
 });
 

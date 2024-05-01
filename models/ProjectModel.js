@@ -13,14 +13,6 @@ const projectSchema = new Schema({
                 ref: "Assignment",
                 required: true,
             },
-            teamSubmission: {
-                type: Boolean,
-                default: false,
-            },
-            contributor: {
-                type: Schema.Types.ObjectId,
-                ref: "User",
-            },
             answer: {
                 type: String,
             },

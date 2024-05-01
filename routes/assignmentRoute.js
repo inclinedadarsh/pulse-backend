@@ -45,6 +45,16 @@ router.post("/", async (req, res) => {
         // Save the updated session
         await session.save();
 
+        // Update all projects associated with the session
+        const project = await ProjectModel.findOne();
+        console.log(project);
+
+        project.submissions.push({
+            assignment: assignment._id,
+            answer: "",
+        });
+        await project.save();
+
         res.status(201).json({
             message: "Assignment created successfully",
             assignment,
