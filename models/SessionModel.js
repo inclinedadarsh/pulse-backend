@@ -7,6 +7,7 @@ const sessionSchema = new Schema({
     projects: [
         { type: Schema.Types.ObjectId, ref: "Project", required: false },
     ],
+    description: { type: String, required: false },
     creator: { type: Schema.Types.ObjectId, ref: "User", required: true },
     assignments: [{ type: Schema.Types.ObjectId, ref: "Assignment" }],
     isLive: { type: Boolean, default: true },
