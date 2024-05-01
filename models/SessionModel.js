@@ -10,6 +10,8 @@ const sessionSchema = new Schema({
     creator: { type: Schema.Types.ObjectId, ref: "User", required: true },
     assignments: [{ type: Schema.Types.ObjectId, ref: "Assignment" }],
     isLive: { type: Boolean, default: true },
+    startMonth: { type: String, required: false },
+    endMonth: { type: String, required: false },
 });
 
 const SessionModel = mongoose.model("Session", sessionSchema);

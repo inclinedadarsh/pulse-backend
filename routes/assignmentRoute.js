@@ -13,12 +13,14 @@ router.post("/", async (req, res) => {
     try {
         const { title, description, dueDate, fromSession } = req.body;
 
+        // Check if all required fields are provided
         if (!title || !description || !dueDate || !fromSession) {
             return res.status(400).json({
-                error: "Title, description, dueDate, and fromSession are required",
+                error: "All fields (title, description, dueDate, fromSession) are required",
             });
         }
 
+        // Create a new assignment
         const assignment = new AssignmentModel({
             title,
             description,
@@ -26,7 +28,22 @@ router.post("/", async (req, res) => {
             fromSession,
         });
 
+        // Save the assignment to the database
         await assignment.save();
+
+        // Get the session from fromSession ID
+        const session = await SessionModel.findById(fromSession);
+
+        // Check if the session exists
+        if (!session) {
+            return res.status(404).json({ error: "Session not found" });
+        }
+
+        // Add the assignment ID to the session's assignments field
+        session.assignments.push(assignment._id);
+
+        // Save the updated session
+        await session.save();
 
         res.status(201).json({
             message: "Assignment created successfully",
