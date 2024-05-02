@@ -7,6 +7,11 @@ const submissionSchema = new Schema({
         required: true,
     },
     answer: { type: String, required: true, default: "" },
+    marks: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
     // Other submission properties
 });
 

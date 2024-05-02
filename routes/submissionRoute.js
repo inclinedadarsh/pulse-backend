@@ -49,4 +49,45 @@ router.post("/", async (req, res) => {
     }
 });
 
+// PATCH /assignment/:id/marks
+router.patch("/", async (req, res) => {
+    try {
+        const { id, marks } = req.body;
+
+        // Check if submission ID and marks are provided
+        if (!id || !marks) {
+            return res
+                .status(400)
+                .json({ error: "Submission ID and marks are required" });
+        }
+
+        const project = await ProjectModel.findOne();
+
+        // Find the submission within the project's submissions array
+        const submission = project.submissions.find(
+            (sub) => sub.assignment.toString() === id
+        );
+
+        // Check if the submission exists
+        if (!submission) {
+            return res.status(404).json({ error: "Submission not found" });
+        }
+
+        // Update the marks
+        submission.marks = marks;
+        console.log(project);
+
+        // Save the updated project
+        await project.save();
+
+        res.status(200).json({
+            message: "Marks updated successfully",
+            submission,
+        });
+    } catch (error) {
+        console.error("Error updating marks:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 export default router;

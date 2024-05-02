@@ -52,6 +52,7 @@ router.post("/", async (req, res) => {
         project.submissions.push({
             assignment: assignment._id,
             answer: "",
+            marks: 0,
         });
         await project.save();
 
