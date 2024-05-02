@@ -8,6 +8,7 @@ import loginRouter from "./routes/loginRoute";
 import sessionRouter from "./routes/sessionRoute";
 import projectRouter from "./routes/projectRoute";
 import assignmentRouter from "./routes/assignmentRoute";
+import submissionRouter from "./routes/submissionRoute";
 
 dotenv.config();
 
@@ -27,5 +28,6 @@ app.use("/login", loginRouter);
 app.use("/session", sessionRouter);
 app.use("/project", projectRouter);
 app.use("/assignment", assignmentRouter);
+app.use("/submission", submissionRouter);
 
 export default app;
